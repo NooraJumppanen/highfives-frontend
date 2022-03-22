@@ -19,8 +19,7 @@ pipeline {
         }
         stage ('deploy'){
             steps {
-                echo 'deploying our app...'
-                sh 'npm start'
+                echo 'not yet deploying our app...'
             }
         }
     }
