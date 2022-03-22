@@ -1,6 +1,8 @@
 pipeline {
     agent any
 
+    tools {nodejs "node"}
+
     stages {
         stage ('build') {
             steps {
@@ -17,7 +19,8 @@ pipeline {
         }
         stage ('deploy'){
             steps {
-                echo 'not yet deploying our app'
+                echo 'deploying our app...'
+                sh 'npm start'
             }
         }
     }
