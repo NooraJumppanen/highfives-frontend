@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import '../styles/App.css';
 import {
 	Box,
 	Container,
@@ -10,18 +11,21 @@ import {
 	TextField,
 	CssBaseline,
 } from '@mui/material';
-import '../styles/App.css';
+import { useFormik } from 'formik';
 
 const Form = () => {
-	const [selection, setSelection] = useState();
+	const formik = useFormik({
+		initialValues: {
+			score: '',
+			comment: '',
+		},
+		onSubmit: (values) => {
+			console.log(values);
+		},
+	});
 
-	const handleSelection = (event, newSelection) => {
-		setSelection(newSelection);
-	};
-
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		console.log('hello');
+	const handleSelection = (event, scoreNum) => {
+		formik.setFieldValue('score', scoreNum);
 	};
 
 	return (
@@ -29,17 +33,17 @@ const Form = () => {
 			<CssBaseline />
 			<Container maxWidth="sm">
 				<Paper elevation={3} sx={{ minheight: '50vh' }}>
-					<form onSubmit={handleSubmit}>
-						<Typography variant="h6" marginBottom={2}>
-							How likely are you to recommend PHZ Full Stack as an employer to a
-							friend or colleague?
-						</Typography>
-
+					<Typography variant="h6" marginBottom={2}>
+						How likely are you to recommend PHZ Full Stack as an employer to a
+						friend or colleague?
+					</Typography>
+					<form onSubmit={formik.handleSubmit}>
 						<ToggleButtonGroup
+							id="score"
 							size="medium"
 							color="warning"
 							exclusive
-							value={selection}
+							value={formik.values.score}
 							onChange={handleSelection}
 							fullWidth
 						>
@@ -93,20 +97,21 @@ const Form = () => {
 							<Typography variant="subtitle2">10 = Extremely likely</Typography>
 						</Box>
 						<Box>
-							<label htmlFor="commentarea">
+							<label htmlFor="comment">
 								Please comment what is your reason for this score.
 							</label>
 
 							<TextField
-								name="comments"
-								id="commentarea"
+								name="comment"
+								id="comment"
 								aria-label="comments area"
 								multiline
 								minRows={4}
 								maxRows={4}
 								fullWidth
 								color="warning"
-								// onChange={handleChange}
+								value={formik.values.comment}
+								onChange={formik.handleChange}
 							/>
 						</Box>
 						<Box sx={{ display: 'flex', justifyContent: 'center', m: 2 }}>
