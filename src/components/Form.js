@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import '../styles/App.css';
 import {
 	Box,
@@ -13,14 +13,26 @@ import {
 } from '@mui/material';
 import { useFormik } from 'formik';
 
+const validate = (values) => {
+	const errors = {};
+	if (!values.score && values.score !== 0) {
+		errors.score = 'You have not selected a score';
+	}
+	return errors;
+};
+
 const Form = () => {
 	const formik = useFormik({
 		initialValues: {
 			score: '',
 			comment: '',
 		},
-		onSubmit: (values) => {
-			console.log(values);
+		validate,
+		onSubmit: (values, actions) => {
+			setTimeout(() => {
+				console.log(values);
+				actions.setSubmitting(false);
+			}, 1000);
 		},
 	});
 
@@ -34,9 +46,10 @@ const Form = () => {
 			<Container maxWidth="sm">
 				<Paper elevation={3} sx={{ minheight: '50vh' }}>
 					<Typography variant="h6" marginBottom={2}>
-						How likely are you to recommend PHZ Full Stack as an employer to a
-						friend or colleague?
+						How likely are you to recommend company X as an employer to a friend
+						or colleague?
 					</Typography>
+
 					<form onSubmit={formik.handleSubmit}>
 						<ToggleButtonGroup
 							id="score"
@@ -65,7 +78,6 @@ const Form = () => {
 							<ToggleButton value={5} aria-label="5" name="score">
 								5
 							</ToggleButton>
-
 							<ToggleButton value={6} aria-label="6" name="score">
 								6
 							</ToggleButton>
@@ -96,6 +108,9 @@ const Form = () => {
 							</Typography>
 							<Typography variant="subtitle2">10 = Extremely likely</Typography>
 						</Box>
+						{formik.errors.score ? (
+							<div className="error">{formik.errors.score}</div>
+						) : null}
 						<Box>
 							<label htmlFor="comment">
 								Please comment what is your reason for this score.
@@ -114,15 +129,17 @@ const Form = () => {
 								onChange={formik.handleChange}
 							/>
 						</Box>
+
 						<Box sx={{ display: 'flex', justifyContent: 'center', m: 2 }}>
 							<Button type="submit" variant="contained" color="warning">
 								Send
 							</Button>
 						</Box>
-						<Typography variant="subtitle2" align="center">
-							Powered by The Highfives
-						</Typography>
 					</form>
+
+					<Typography variant="subtitle2" align="center">
+						Powered by The Highfives
+					</Typography>
 				</Paper>
 			</Container>
 		</Fragment>
