@@ -59,10 +59,9 @@ const Form = () => {
 
 	const handleSelection = (event, scoreNum) => {
 		formik.setFieldValue('score', scoreNum);
-		if (isDisabled) {
+		if (scoreNum || scoreNum === 0) {
 			setIsDisabled(false);
-		}
-		if (!isDisabled) {
+		} else {
 			setIsDisabled(true);
 		}
 	};
