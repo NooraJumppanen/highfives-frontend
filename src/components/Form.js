@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+
 import '../styles/App.css';
 import {
 	Box,
@@ -17,6 +17,7 @@ import {
 	DialogContent,
 } from '@mui/material';
 import { useFormik } from 'formik';
+import { useNavigate } from 'react-router-dom';
 
 const validate = (values) => {
 	const errors = {};
@@ -27,10 +28,10 @@ const validate = (values) => {
 };
 
 const Form = () => {
-	const navigate = useNavigate();
 	const [open, setOpen] = useState(false);
 	const [isSubmitted, setIsSubmitted] = useState(false);
 	const [isDisabled, setIsDisabled] = useState(true);
+	const navigate = useNavigate();
 
 	const handleClickOpen = () => {
 		setOpen(true);
