@@ -1,4 +1,5 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/App.css';
 import {
 	Box,
@@ -10,18 +11,35 @@ import {
 	Typography,
 	TextField,
 	CssBaseline,
+	Dialog,
+	DialogTitle,
+	DialogActions,
+	DialogContent,
 } from '@mui/material';
 import { useFormik } from 'formik';
 
 const validate = (values) => {
 	const errors = {};
 	if (!values.score && values.score !== 0) {
-		errors.score = 'You have not selected a score';
+		errors.score = 'Please select a score before submitting.';
 	}
 	return errors;
 };
 
 const Form = () => {
+	const navigate = useNavigate();
+	const [open, setOpen] = useState(false);
+	const [isSubmitted, setIsSubmitted] = useState(false);
+	const [isDisabled, setIsDisabled] = useState(true);
+
+	const handleClickOpen = () => {
+		setOpen(true);
+	};
+
+	const handleClose = () => {
+		setOpen(false);
+	};
+
 	const formik = useFormik({
 		initialValues: {
 			score: '',
@@ -31,13 +49,22 @@ const Form = () => {
 		onSubmit: (values, actions) => {
 			setTimeout(() => {
 				console.log(values);
+				setIsSubmitted(true);
+				actions.resetForm();
 				actions.setSubmitting(false);
+				navigate('/thankyou');
 			}, 1000);
 		},
 	});
 
 	const handleSelection = (event, scoreNum) => {
 		formik.setFieldValue('score', scoreNum);
+		if (isDisabled) {
+			setIsDisabled(false);
+		}
+		if (!isDisabled) {
+			setIsDisabled(true);
+		}
 	};
 
 	return (
@@ -50,7 +77,7 @@ const Form = () => {
 						or colleague?
 					</Typography>
 
-					<form onSubmit={formik.handleSubmit}>
+					<form>
 						<ToggleButtonGroup
 							id="score"
 							size="medium"
@@ -59,6 +86,7 @@ const Form = () => {
 							value={formik.values.score}
 							onChange={handleSelection}
 							fullWidth
+							disabled={isSubmitted}
 						>
 							<ToggleButton value={0} aria-label="0" name="score">
 								0
@@ -127,14 +155,38 @@ const Form = () => {
 								color="warning"
 								value={formik.values.comment}
 								onChange={formik.handleChange}
+								disabled={isSubmitted}
 							/>
 						</Box>
 
 						<Box sx={{ display: 'flex', justifyContent: 'center', m: 2 }}>
-							<Button type="submit" variant="contained" color="warning">
+							<Button
+								onClick={handleClickOpen}
+								variant="contained"
+								color="warning"
+								disabled={isDisabled}
+							>
 								Send
 							</Button>
 						</Box>
+
+						<Dialog open={open} onClose={handleClose}>
+							<DialogTitle>
+								Are you sure you want to submit your answer?
+							</DialogTitle>
+							<DialogContent></DialogContent>
+							<DialogActions>
+								<Button
+									onClick={formik.handleSubmit}
+									variant="contained"
+									color="primary"
+									autoFocus
+								>
+									Yes
+								</Button>
+								<Button onClick={handleClose}>Cancel</Button>
+							</DialogActions>
+						</Dialog>
 					</form>
 
 					<Typography variant="subtitle2" align="center">
