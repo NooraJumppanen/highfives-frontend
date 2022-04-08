@@ -18,8 +18,8 @@
     {
       "label": "PHZ Homepage",
       "cookiePath": "",
-      "url":"http://localhost:3000/", 
-      "referenceUrl": "https://thunderous-lollipop-68d59d.netlify.app/ ",
+      "url": "http://localhost:3001/",
+      "referenceUrl": "https://thunderous-lollipop-68d59d.netlify.app/",
       "readyEvent": "",
       "readySelector": "",
       "delay": 0,
