@@ -10,10 +10,6 @@ import {
 	Typography,
 	TextField,
 	CssBaseline,
-	Dialog,
-	DialogTitle,
-	DialogActions,
-	DialogContent,
 } from '@mui/material';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
@@ -27,18 +23,9 @@ const validate = (values) => {
 };
 
 const Form = () => {
-	const [open, setOpen] = useState(false);
 	const [isSubmitted, setIsSubmitted] = useState(false);
 	const [isDisabled, setIsDisabled] = useState(true);
 	const navigate = useNavigate();
-
-	const handleClickOpen = () => {
-		setOpen(true);
-	};
-
-	const handleClose = () => {
-		setOpen(false);
-	};
 
 	const formik = useFormik({
 		initialValues: {
@@ -160,7 +147,7 @@ const Form = () => {
 
 						<Box sx={{ display: 'flex', justifyContent: 'center', m: 2 }}>
 							<Button
-								onClick={handleClickOpen}
+								onClick={formik.handleSubmit}
 								variant="contained"
 								color="warning"
 								disabled={isDisabled}
@@ -168,24 +155,6 @@ const Form = () => {
 								Send
 							</Button>
 						</Box>
-
-						<Dialog open={open} onClose={handleClose}>
-							<DialogTitle>
-								Are you sure you want to submit your answer?
-							</DialogTitle>
-							<DialogContent></DialogContent>
-							<DialogActions>
-								<Button
-									onClick={formik.handleSubmit}
-									variant="contained"
-									color="primary"
-									autoFocus
-								>
-									Yes
-								</Button>
-								<Button onClick={handleClose}>Cancel</Button>
-							</DialogActions>
-						</Dialog>
 					</form>
 
 					<Typography variant="subtitle2" align="center">
