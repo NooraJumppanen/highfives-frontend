@@ -45,17 +45,4 @@
   "devDependencies": {
     "license-checker": "^25.0.1",
     "license-to-fail": "^4.0.0"
-  },
-  "description": "Usage: git archive --format=tar HEAD | tar x -C ~/workspace/docker/project-name",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/NooraJumppanen/highfives-frontend.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/NooraJumppanen/highfives-frontend/issues"
-  },
-  "homepage": ""
-}
+  }
