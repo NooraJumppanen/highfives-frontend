@@ -2,7 +2,6 @@ import React, { Fragment, useState } from 'react';
 import { db } from '../firebase-config';
 import { collection, addDoc } from 'firebase/firestore';
 import '../styles/App.css';
-import '../styles/iframe.css';
 import {
 	Box,
 	Container,
@@ -73,8 +72,8 @@ const Form = () => {
 			<Container maxWidth="sm">
 				<Paper elevation={3} sx={{ minheight: '50vh' }}>
 					<Typography variant="h6" marginBottom={2}>
-						How likely are you to recommend company X as an employer to a friend
-						or colleague?
+						How likely are you to recommend PHZ Full Stack as an employer to a
+						friend or colleague?
 					</Typography>
 
 					<form>
@@ -110,7 +109,7 @@ const Form = () => {
 										width: '45px',
 										height: '45px',
 										borderRadius: 0,
-										border: '1px lightgray solid',
+										border: '1px darkgray solid',
 									}}
 								>
 									0
@@ -122,7 +121,7 @@ const Form = () => {
 									sx={{
 										width: '45px',
 										height: '45px',
-										border: '1px lightgray solid',
+										border: '1px darkgray solid',
 									}}
 								>
 									1
@@ -134,7 +133,7 @@ const Form = () => {
 									sx={{
 										width: '45px',
 										height: '45px',
-										border: '1px lightgray solid',
+										border: '1px darkgray solid',
 									}}
 								>
 									2
@@ -146,7 +145,7 @@ const Form = () => {
 									sx={{
 										width: '45px',
 										height: '45px',
-										border: '1px lightgray solid',
+										border: '1px darkgray solid',
 									}}
 								>
 									3
@@ -159,7 +158,7 @@ const Form = () => {
 										width: '45px',
 										height: '45px',
 										borderRadius: 0,
-										border: '1px lightgray solid',
+										border: '1px darkgray solid',
 									}}
 								>
 									4
@@ -175,7 +174,7 @@ const Form = () => {
 										height: '45px',
 										borderRadius: 0,
 										ml: '-1px',
-										border: '1px lightgray solid',
+										border: '1px darkgray solid',
 									}}
 								>
 									5
@@ -188,7 +187,7 @@ const Form = () => {
 									sx={{
 										width: '45px',
 										height: '45px',
-										border: '1px lightgray solid',
+										border: '1px darkgray solid',
 									}}
 								>
 									6
@@ -200,7 +199,7 @@ const Form = () => {
 									sx={{
 										width: '45px',
 										height: '45px',
-										border: '1px lightgray solid',
+										border: '1px darkgray solid',
 									}}
 								>
 									7
@@ -212,7 +211,7 @@ const Form = () => {
 									sx={{
 										width: '45px',
 										height: '45px',
-										border: '1px lightgray solid',
+										border: '1px darkgray solid',
 									}}
 								>
 									8
@@ -224,7 +223,7 @@ const Form = () => {
 									sx={{
 										width: '45px',
 										height: '45px',
-										border: '1px lightgray solid',
+										border: '1px darkgray solid',
 									}}
 								>
 									9
@@ -237,7 +236,7 @@ const Form = () => {
 										width: '45px',
 										height: '45px',
 										borderRadius: 0,
-										border: '1px lightgray solid',
+										border: '1px darkgray solid',
 									}}
 								>
 									10

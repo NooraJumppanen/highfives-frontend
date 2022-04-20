@@ -2,7 +2,6 @@ import React from 'react';
 import { Fragment } from 'react';
 import { CssBaseline, Container, Paper, Typography } from '@mui/material';
 import '../styles/App.css';
-import '../styles/iframe.css';
 
 const ThankYou = () => {
 	return (
