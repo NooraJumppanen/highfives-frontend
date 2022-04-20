@@ -6,9 +6,15 @@ label {
 	font-family: 'Roboto', sans-serif;
 }
 
+html,
+.MuiContainer-root,
+#root {
+	background-color: hsl(30, 4%, 89%);
+}
+
 .MuiPaper-root {
-	margin-top: 3rem;
-	margin-bottom: 3rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
 	padding: 2rem;
 }
 
