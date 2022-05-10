@@ -16,7 +16,7 @@ const ThankYou = () => {
 						Your answer was submitted.
 					</Typography>
 					<Typography variant="subtitle2" align="center" marginTop={4}>
-						Powered by The Highfives
+						Powered by The High Fives
 					</Typography>
 				</Paper>
 			</Container>
