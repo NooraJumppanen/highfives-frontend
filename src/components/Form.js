@@ -1,8 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { db } from '../firebase-config';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import Cookies from 'universal-cookie';
-
+import { collection, addDoc } from 'firebase/firestore';
 import '../styles/App.css';
 import {
 	Box,
@@ -30,14 +28,13 @@ const validate = (values) => {
 const Form = () => {
 	const [isSubmitted, setIsSubmitted] = useState(false);
 	const [isDisabled, setIsDisabled] = useState(true);
-	const cookies = new Cookies();
 
 	const navigate = useNavigate();
+
 	const formik = useFormik({
 		initialValues: {
 			score: '',
 			comment: '',
-			timestamp: serverTimestamp(),
 			date: {
 				yyyy: new Date().getFullYear(),
 				mm: new Date().getMonth(),
@@ -47,33 +44,26 @@ const Form = () => {
 		validate,
 		onSubmit: (values, actions) => {
 			setTimeout(() => {
-				let canSubmit = false;
-				if (cookies.get('date-cookie')) {
-					let getLastSubmittedDate = cookies.get('date-cookie');
-					let currentDate = Date.now;
-					if (
-						currentDate.getTime - getLastSubmittedDate.getTime >
-						30 * 24 * 60 * 60 * 1000
-					) {
-						canSubmit = true;
-					} else {
-						canSubmit = false;
-					}
-				} else {
-					cookies.set('date-cookie', Date.now);
-					canSubmit = true;
-				}
+				const localStorageKey = 'nps-form';
+				const today = new Date();
+				const thisYear = today.getFullYear();
+				const thisMonth = today.getMonth();
+				const thisYearAndMonth = `${thisYear}${thisMonth}`;
+				const localStorageYearAndMonth = localStorage.getItem(localStorageKey);
 
-				if (canSubmit) {
+				if (localStorageYearAndMonth !== thisYearAndMonth) {
+					localStorage.setItem(localStorageKey, thisYearAndMonth);
+
 					const docRef = collection(db, 'values2');
 					addDoc(docRef, values);
-
 					setIsSubmitted(true);
 					actions.resetForm();
 					actions.setSubmitting(false);
 					navigate('/thankyou');
 				} else {
-					alert('You have already submitted.');
+					alert(
+						'Your answer can not be submitted because you have already answered the survey this month.'
+					);
 				}
 			}, 1000);
 		},
