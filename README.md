@@ -114,6 +114,24 @@ Approving changes
 
 $ backstop approve
 
+#### 3.4.2 Cypress testing
+
+JavaScript testing automation solution (end-to-end testing framework) for used for web automation create web test automation scripts.
+
+setting up tests:
+
+Install cypress in the root folder.
+
+npm install cypress --save-dev
+
+Create a folder in integration folder and create a file to write the test scripts.
+
+To run the tests:
+
+npx cypress open
+
+Takes screen shots of the tests running and saves in the folder automatically.
+
 ### 3.5. IDE Setup and Debugging
 
 ### 3.6. Version Control
