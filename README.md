@@ -93,9 +93,9 @@ Add here examples and hints of good ways how to code the project. Convert the si
 
 ### 3.2. Start the Application
 
-- 1. Pull or clone the newest code from GitHub.
-- 2. npm install
-- 3. npm start 
+- I Pull or clone the newest code from GitHub.
+- II npm install
+- III npm start 
 
 ### 3.3. Access the Application
 
