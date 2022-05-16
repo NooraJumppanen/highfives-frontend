@@ -20,10 +20,10 @@ To create a simple and clear questionnaire form for PHZ employees.
 
 ### 1.3. Personas
 
-Chowdhury Mahady @mahadyC
-Avadhanula Sravanthi @AsravanthiR
-Jumppanen Noora @NooraJumppanen
-Kantanen Heikki @HeikkiKantanen
+- Chowdhury Mahady @mahadyC
+- Avadhanula Sravanthi @AsravanthiR
+- Jumppanen Noora @NooraJumppanen
+- Kantanen Heikki @HeikkiKantanen
 
 ### 1.4. Use Cases
 
