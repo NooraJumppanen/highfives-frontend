@@ -1,8 +1,5 @@
 # PHZ Questionnaire Form
 
-Usage:
-git archive --format=tar HEAD | tar x -C ~/workspace/docker/project-name
-
 ## 1. Project Description
 
 Net promoter score (NPS) is a widely used market research metric that typically takes the form of a single survey question asking respondents to rate the likelihood that they would recommend a company, product, or a service to a friend or colleague. NPS score is measured between 0 and 10. The NPS assumes a subdivision of respondents into "promoters" who provide ratings of 9 or 10, "passives" who provide ratings of 7 or 8, and "detractors" who provide ratings of 6 or lower. In this project we created an embeddable questionnaire form for PHZ Full Stack to measure their companys NPS.
