@@ -48,7 +48,7 @@ Languages, frameworks and technologies used:
 
 Directory structure
 
-- src/components for source code
+- src/ for source code
 - tests/ for tests
 
 ### 2.4. Development Guide
