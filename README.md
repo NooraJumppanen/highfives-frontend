@@ -13,7 +13,6 @@ To create a simple and clear questionnaire form for PHZ employees.
 - Slack
 - Teams
 - Trello
-- GitHub
 
 ### 1.3. Personas
 
