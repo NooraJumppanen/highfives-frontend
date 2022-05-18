@@ -36,12 +36,14 @@ https://wiki.phz.fi/NonFunctionalRequirements
 Languages, frameworks and technologies used: 
 
 - React
+- CSS
 - JavaScript
 - Material-UI
 - Firebase / Firestore
+- Netlify
+- Cypress
+- Backstopjs
 
-
-### 2.2. Naming, Terms and Key Concepts
 
 ### 2.3. Coding Convention
 
@@ -111,6 +113,10 @@ Takes screen shots of the tests running and saves in the folder automatically.
 ### 3.6. Version Control
 
 GitHub
+
+### 3.7 Databases and Migrations
+
+- Firebase
 
 ## 6. Operating Manual
 
