@@ -111,45 +111,7 @@ Takes screen shots of the tests running and saves in the folder automatically.
 
 ### 3.6. Version Control
 
-### 3.7. Databases and Migrations
-
-### 3.8. Continuous Integration
-
-## 4. Staging Environment
-
-### 4.1. Access
-
-### 4.2. Deployment
-
-### 4.3. Smoke Tests
-
-#### 4.3.1. Automated Test Cases
-
-#### 4.3.2. Manual Test Cases
-
-### 4.4. Rollback
-
-### 4.5. Logs
-
-### 4.6. Monitoring
-
-## 5. Production Environment
-
-### 5.1. Access
-
-### 5.2. Deployment
-
-### 5.3. Smoke Tests
-
-#### 5.3.1. Automated Test Cases
-
-#### 5.3.2. Manual Test Cases
-
-### 5.4. Rollback
-
-### 5.5. Logs
-
-### 5.6. Monitoring
+GitHub
 
 ## 6. Operating Manual
 
