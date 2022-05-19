@@ -49,7 +49,6 @@
 		]
 	},
 	"devDependencies": {
-		"backstopjs": "^6.0.4",
 		"cypress": "^9.6.1",
 		"eslint-plugin-cypress": "^2.12.1",
 		"license-checker": "^25.0.1",
