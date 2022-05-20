@@ -34,7 +34,7 @@ const Form = () => {
 	const formik = useFormik({
 		initialValues: {
 			score: '',
-			comment: '',
+			comment: ''
 		},
 		validate,
 		onSubmit: (values, actions) => {
