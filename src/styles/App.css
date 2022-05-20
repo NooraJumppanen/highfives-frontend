@@ -22,3 +22,15 @@ html,
 	color: red;
 	margin-bottom: 1rem;
 }
+
+#language {
+	font-family: 'Roboto', sans-serif;
+	padding: 4px;
+	border: 0.5px solid #6a6969;
+	border: none;
+	border-radius: 7px;
+	font-size: 16px;
+	box-shadow: 0px 0px 4px 0px gray;
+	background-color: white;
+	margin-bottom: 1rem;
+}
