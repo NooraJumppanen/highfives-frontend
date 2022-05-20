@@ -28,7 +28,9 @@ const validate = (values) => {
 const Form = () => {
 	const [isSubmitted, setIsSubmitted] = useState(false);
 	const [isDisabled, setIsDisabled] = useState(true);
+	const [language, setLanguage] = useState("EN");
 	const commentCharacterLimit = 500;
+	const firebaseCollectionName = "values3";
 
 	const navigate = useNavigate();
 
@@ -56,7 +58,7 @@ const Form = () => {
 				if (localStorageYearAndMonth !== thisYearAndMonth) {
 					localStorage.setItem(localStorageKey, thisYearAndMonth);
 
-					const docRef = collection(db, "values3");
+					const docRef = collection(db, firebaseCollectionName);
 					addDoc(docRef, values);
 					setIsSubmitted(true);
 					actions.resetForm();
@@ -89,15 +91,41 @@ const Form = () => {
 		disabled: isSubmitted,
 	};
 
+	const changeHandler = (e) => {
+		setLanguage(e.target.value);
+	};
+
 	return (
 		<Fragment>
 			<CssBaseline />
 			<Container maxWidth="sm">
 				<Paper elevation={3} sx={{ minheight: "50vh" }}>
-					<Typography variant="h6" marginBottom={3}>
-						How likely are you to recommend PHZ Full Stack as an employer to a
-						friend or colleague?
-					</Typography>
+					<div>
+						<label htmlFor="response-sort" />
+						<select name="language" id="language" onChange={changeHandler}>
+							<option value="EN">EN</option>
+							<option value="FI">FI</option>
+							<option value="SV">SV</option>
+						</select>
+					</div>
+					{language === "EN" ? (
+						<Typography variant="h6" marginBottom={3}>
+							How likely are you to recommend PHZ Full Stack as an employer to a
+							friend or colleague?
+						</Typography>
+					) : language === "FI" ? (
+						<Typography variant="h6" marginBottom={3}>
+							Kuinka todennäköisesti suosittelisit PHZ Full Stackia työnantajana
+							ystävällesi tai kollegallesi?
+						</Typography>
+					) : language === "SV" ? (
+						<Typography variant="h6" marginBottom={3}>
+							Hur troligt är det att du skulle rekommendera PHZ Full Stack som
+							arbetsgivare till en vän eller kollega?
+						</Typography>
+					) : (
+						""
+					)}
 
 					<form>
 						<Stack
@@ -267,24 +295,73 @@ const Form = () => {
 							</ToggleButtonGroup>
 						</Stack>
 
-						<Box
-							sx={{
-								display: "flex",
-								justifyContent: "space-between",
-								mt: "0.5rem",
-								mb: "2rem",
-							}}
-						>
-							<Typography variant="caption">0 = Extremely unlikely</Typography>
-							<Typography variant="caption">10 = Extremely likely</Typography>
-						</Box>
+						{language === "EN" ? (
+							<Box
+								sx={{
+									display: "flex",
+									justifyContent: "space-between",
+									mt: "0.5rem",
+									mb: "2rem",
+								}}
+							>
+								<Typography variant="caption">
+									0 = Extremely unlikely
+								</Typography>
+								<Typography variant="caption">10 = Extremely likely</Typography>
+							</Box>
+						) : language === "FI" ? (
+							<Box
+								sx={{
+									display: "flex",
+									justifyContent: "space-between",
+									mt: "0.5rem",
+									mb: "2rem",
+								}}
+							>
+								<Typography variant="caption">
+									0 = Erittäin epätodennäköisesti
+								</Typography>
+								<Typography variant="caption">
+									10 = Erittäin todennäköisesti
+								</Typography>
+							</Box>
+						) : language === "SV" ? (
+							<Box
+								sx={{
+									display: "flex",
+									justifyContent: "space-between",
+									mt: "0.5rem",
+									mb: "2rem",
+								}}
+							>
+								<Typography variant="caption">
+									0 = Extremt osannolikt
+								</Typography>
+								<Typography variant="caption">10 = Extremt troligt</Typography>
+							</Box>
+						) : (
+							""
+						)}
+
 						{formik.errors.score ? (
 							<div className="error">{formik.errors.score}</div>
 						) : null}
 						<Box>
-							<label htmlFor="comment">
-								Please comment what is your reason for this score.
-							</label>
+							{language === "EN" ? (
+								<label htmlFor="comment">
+									Please comment your reason for this score
+								</label>
+							) : language === "FI" ? (
+								<label htmlFor="comment">
+									Tähän voit kommentoida valintaasi
+								</label>
+							) : language === "SV" ? (
+								<label htmlFor="comment">
+									Vad är den främsta anledningen till ditt svar?
+								</label>
+							) : (
+								""
+							)}
 
 							<TextField
 								name="comment"
