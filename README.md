@@ -23,7 +23,7 @@ To create a simple and clear questionnaire form for PHZ employees.
 
 ### 1.4. Use Cases
 
-Link to the questionnaire form is sent to the employees once a month. In the questionnaire employees are asked a simple question "How likely are you to recommend PHZ Full Stack as an employer to a friend or colleague?". Then they have the option to choose a number between 0 and 10. 0 being "Extremely unlikely" and 10 being "Extremely likely". Users then also have an opportunity to add additional comments if they choose to. 
+Link to the questionnaire form is sent to the employees once a month. In the questionnaire employees are asked a simple question "How likely are you to recommend PHZ Full Stack as an employer to a friend or colleague?". Then they have the option to choose a number between 0 and 10. 0 being "Extremely unlikely" and 10 being "Extremely likely". Users then also have an opportunity to add additional comments if they choose to.
 
 ### 1.5. Non-Functional Requirements
 
@@ -33,7 +33,7 @@ https://wiki.phz.fi/NonFunctionalRequirements
 
 ### 2.1. Technologies
 
-Languages, frameworks and technologies used: 
+Languages, frameworks and technologies used:
 
 - React
 - CSS
@@ -43,7 +43,6 @@ Languages, frameworks and technologies used:
 - Netlify
 - Cypress
 - Backstopjs
-
 
 ### 2.3. Coding Convention
 
@@ -64,9 +63,9 @@ Add here examples and hints of good ways how to code the project. Convert the si
 
 ### 3.2. Start the Application
 
--  I. Pull or clone the newest code from GitHub.
--  II. npm install
--  III. npm start 
+- I. Pull or clone the newest code from GitHub.
+- II. npm install
+- III. npm start
 
 ### 3.3. Access the Application
 

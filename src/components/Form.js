@@ -1,7 +1,7 @@
-import React, { Fragment, useState } from 'react';
-import { db } from '../firebase-config';
-import { collection, addDoc } from 'firebase/firestore';
-import '../styles/App.css';
+import React, { Fragment, useState } from "react";
+import { db } from "../firebase-config";
+import { collection, addDoc } from "firebase/firestore";
+import "../styles/App.css";
 import {
 	Box,
 	Container,
@@ -13,14 +13,14 @@ import {
 	TextField,
 	CssBaseline,
 	Stack,
-} from '@mui/material';
-import { useFormik } from 'formik';
-import { useNavigate } from 'react-router-dom';
+} from "@mui/material";
+import { useFormik } from "formik";
+import { useNavigate } from "react-router-dom";
 
 const validate = (values) => {
 	const errors = {};
 	if (!values.score && values.score !== 0) {
-		errors.score = 'Please select a score before submitting.';
+		errors.score = "Please select a score before submitting.";
 	}
 	return errors;
 };
@@ -28,16 +28,16 @@ const validate = (values) => {
 const Form = () => {
 	const [isSubmitted, setIsSubmitted] = useState(false);
 	const [isDisabled, setIsDisabled] = useState(true);
-	const [language, setLanguage] = useState('EN');
+	const [language, setLanguage] = useState("EN");
 	const commentCharacterLimit = 500;
-	const firebaseCollectionName = 'values3';
+	const firebaseCollectionName = "values3";
 
 	const navigate = useNavigate();
 
 	const formik = useFormik({
 		initialValues: {
-			score: '',
-			comment: '',
+			score: "",
+			comment: "",
 			date: {
 				yyyy: new Date().getFullYear(),
 				mm: new Date().getMonth(),
@@ -48,7 +48,7 @@ const Form = () => {
 		validate,
 		onSubmit: (values, actions) => {
 			setTimeout(() => {
-				const localStorageKey = 'nps-form';
+				const localStorageKey = "nps-form";
 				const today = new Date();
 				const thisYear = today.getFullYear();
 				const thisMonth = today.getMonth();
@@ -63,10 +63,10 @@ const Form = () => {
 					setIsSubmitted(true);
 					actions.resetForm();
 					actions.setSubmitting(false);
-					navigate('/thankyou');
+					navigate("/thankyou");
 				} else {
 					alert(
-						'Your answer can not be submitted because you have already answered the survey this month.'
+						"Your answer can not be submitted because you have already answered the survey this month."
 					);
 				}
 			}, 1000);
@@ -74,7 +74,7 @@ const Form = () => {
 	});
 
 	const handleSelection = (event, scoreNum) => {
-		formik.setFieldValue('score', scoreNum);
+		formik.setFieldValue("score", scoreNum);
 		if (scoreNum || scoreNum === 0) {
 			setIsDisabled(false);
 		} else {
@@ -83,8 +83,8 @@ const Form = () => {
 	};
 
 	const control = {
-		id: 'score',
-		color: 'warning',
+		id: "score",
+		color: "warning",
 		exclusive: true,
 		value: formik.values.score,
 		onChange: handleSelection,
@@ -99,7 +99,7 @@ const Form = () => {
 		<Fragment>
 			<CssBaseline />
 			<Container maxWidth="sm">
-				<Paper elevation={3} sx={{ minheight: '50vh' }}>
+				<Paper elevation={3} sx={{ minheight: "50vh" }}>
 					<div>
 						<label htmlFor="response-sort" />
 						<select name="language" id="language" onChange={changeHandler}>
@@ -108,46 +108,46 @@ const Form = () => {
 							<option value="SV">SV</option>
 						</select>
 					</div>
-					{language === 'EN' ? (
+					{language === "EN" ? (
 						<Typography variant="h6" marginBottom={3}>
 							How likely are you to recommend PHZ Full Stack as an employer to a
 							friend or colleague?
 						</Typography>
-					) : language === 'FI' ? (
+					) : language === "FI" ? (
 						<Typography variant="h6" marginBottom={3}>
 							Kuinka todennäköisesti suosittelisit PHZ Full Stackia työnantajana
 							ystävällesi tai kollegallesi?
 						</Typography>
-					) : language === 'SV' ? (
+					) : language === "SV" ? (
 						<Typography variant="h6" marginBottom={3}>
 							Hur troligt är det att du skulle rekommendera PHZ Full Stack som
 							arbetsgivare till en vän eller kollega?
 						</Typography>
 					) : (
-						''
+						""
 					)}
 
 					<form>
 						<Stack
 							sx={{
-								alignItems: 'center',
+								alignItems: "center",
 							}}
 							direction={{
-								xs: 'column',
-								sm: 'row',
-								md: 'row',
-								lg: 'row',
-								xl: 'row',
+								xs: "column",
+								sm: "row",
+								md: "row",
+								lg: "row",
+								xl: "row",
 							}}
 						>
 							<ToggleButtonGroup
 								sx={{
 									m: {
-										xs: '12px',
-										sm: '0px',
-										md: '0px',
-										lg: '0px',
-										xl: '0px',
+										xs: "12px",
+										sm: "0px",
+										md: "0px",
+										lg: "0px",
+										xl: "0px",
 									},
 								}}
 								{...control}
@@ -157,10 +157,10 @@ const Form = () => {
 									aria-label="0"
 									name="score"
 									sx={{
-										width: '45px',
-										height: '45px',
+										width: "45px",
+										height: "45px",
 										borderRadius: 0,
-										border: '1px darkgray solid',
+										border: "1px darkgray solid",
 									}}
 								>
 									0
@@ -170,9 +170,9 @@ const Form = () => {
 									aria-label="1"
 									name="score"
 									sx={{
-										width: '45px',
-										height: '45px',
-										border: '1px darkgray solid',
+										width: "45px",
+										height: "45px",
+										border: "1px darkgray solid",
 									}}
 								>
 									1
@@ -182,9 +182,9 @@ const Form = () => {
 									aria-label="2"
 									name="score"
 									sx={{
-										width: '45px',
-										height: '45px',
-										border: '1px darkgray solid',
+										width: "45px",
+										height: "45px",
+										border: "1px darkgray solid",
 									}}
 								>
 									2
@@ -194,9 +194,9 @@ const Form = () => {
 									aria-label="3"
 									name="score"
 									sx={{
-										width: '45px',
-										height: '45px',
-										border: '1px darkgray solid',
+										width: "45px",
+										height: "45px",
+										border: "1px darkgray solid",
 									}}
 								>
 									3
@@ -206,10 +206,10 @@ const Form = () => {
 									aria-label="4"
 									name="score"
 									sx={{
-										width: '45px',
-										height: '45px',
+										width: "45px",
+										height: "45px",
 										borderRadius: 0,
-										border: '1px darkgray solid',
+										border: "1px darkgray solid",
 									}}
 								>
 									4
@@ -221,11 +221,11 @@ const Form = () => {
 									aria-label="5"
 									name="score"
 									sx={{
-										width: '45px',
-										height: '45px',
+										width: "45px",
+										height: "45px",
 										borderRadius: 0,
-										ml: '-1px',
-										border: '1px darkgray solid',
+										ml: "-1px",
+										border: "1px darkgray solid",
 									}}
 								>
 									5
@@ -236,9 +236,9 @@ const Form = () => {
 									aria-label="6"
 									name="score"
 									sx={{
-										width: '45px',
-										height: '45px',
-										border: '1px darkgray solid',
+										width: "45px",
+										height: "45px",
+										border: "1px darkgray solid",
 									}}
 								>
 									6
@@ -248,9 +248,9 @@ const Form = () => {
 									aria-label="7"
 									name="score"
 									sx={{
-										width: '45px',
-										height: '45px',
-										border: '1px darkgray solid',
+										width: "45px",
+										height: "45px",
+										border: "1px darkgray solid",
 									}}
 								>
 									7
@@ -260,9 +260,9 @@ const Form = () => {
 									aria-label="8"
 									name="score"
 									sx={{
-										width: '45px',
-										height: '45px',
-										border: '1px darkgray solid',
+										width: "45px",
+										height: "45px",
+										border: "1px darkgray solid",
 									}}
 								>
 									8
@@ -272,9 +272,9 @@ const Form = () => {
 									aria-label="9"
 									name="score"
 									sx={{
-										width: '45px',
-										height: '45px',
-										border: '1px darkgray solid',
+										width: "45px",
+										height: "45px",
+										border: "1px darkgray solid",
 									}}
 								>
 									9
@@ -284,10 +284,10 @@ const Form = () => {
 									aria-label="10"
 									name="score"
 									sx={{
-										width: '45px',
-										height: '45px',
+										width: "45px",
+										height: "45px",
 										borderRadius: 0,
-										border: '1px darkgray solid',
+										border: "1px darkgray solid",
 									}}
 								>
 									10
@@ -295,13 +295,13 @@ const Form = () => {
 							</ToggleButtonGroup>
 						</Stack>
 
-						{language === 'EN' ? (
+						{language === "EN" ? (
 							<Box
 								sx={{
-									display: 'flex',
-									justifyContent: 'space-between',
-									mt: '0.5rem',
-									mb: '2rem',
+									display: "flex",
+									justifyContent: "space-between",
+									mt: "0.5rem",
+									mb: "2rem",
 								}}
 							>
 								<Typography variant="caption">
@@ -309,13 +309,13 @@ const Form = () => {
 								</Typography>
 								<Typography variant="caption">10 = Extremely likely</Typography>
 							</Box>
-						) : language === 'FI' ? (
+						) : language === "FI" ? (
 							<Box
 								sx={{
-									display: 'flex',
-									justifyContent: 'space-between',
-									mt: '0.5rem',
-									mb: '2rem',
+									display: "flex",
+									justifyContent: "space-between",
+									mt: "0.5rem",
+									mb: "2rem",
 								}}
 							>
 								<Typography variant="caption">
@@ -325,13 +325,13 @@ const Form = () => {
 									10 = Erittäin todennäköisesti
 								</Typography>
 							</Box>
-						) : language === 'SV' ? (
+						) : language === "SV" ? (
 							<Box
 								sx={{
-									display: 'flex',
-									justifyContent: 'space-between',
-									mt: '0.5rem',
-									mb: '2rem',
+									display: "flex",
+									justifyContent: "space-between",
+									mt: "0.5rem",
+									mb: "2rem",
 								}}
 							>
 								<Typography variant="caption">
@@ -340,27 +340,27 @@ const Form = () => {
 								<Typography variant="caption">10 = Extremt troligt</Typography>
 							</Box>
 						) : (
-							''
+							""
 						)}
 
 						{formik.errors.score ? (
 							<div className="error">{formik.errors.score}</div>
 						) : null}
 						<Box>
-							{language === 'EN' ? (
+							{language === "EN" ? (
 								<label htmlFor="comment">
 									Please comment your reason for this score
 								</label>
-							) : language === 'FI' ? (
+							) : language === "FI" ? (
 								<label htmlFor="comment">
 									Tähän voit kommentoida valintaasi
 								</label>
-							) : language === 'SV' ? (
+							) : language === "SV" ? (
 								<label htmlFor="comment">
 									Vad är den främsta anledningen till ditt svar?
 								</label>
 							) : (
-								''
+								""
 							)}
 
 							<TextField
@@ -377,12 +377,13 @@ const Form = () => {
 								disabled={isSubmitted}
 								inputProps={{ maxLength: commentCharacterLimit }}
 								helperText={`${formik.values.comment.length}/${commentCharacterLimit}`}
-								FormHelperTextProps={{ style: { textAlign: 'right' } }}
+								FormHelperTextProps={{ style: { textAlign: "right" } }}
 							/>
 						</Box>
 
-						<Box sx={{ display: 'flex', justifyContent: 'center', m: 2 }}>
+						<Box sx={{ display: "flex", justifyContent: "center", m: 2 }}>
 							<Button
+								aria-label="send"
 								onClick={formik.handleSubmit}
 								variant="contained"
 								color="warning"
