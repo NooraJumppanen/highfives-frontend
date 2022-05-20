@@ -107,6 +107,42 @@ npx cypress open
 
 Takes screen shots of the tests running and saves in the folder automatically.
 
+#### 3.4.3 React Testing Library
+
+# Test descriptions
+
+## App.js
+
+### Testing the Form
+
+#### Checking the question is visible
+
+1. Checks that the question "How likely are you to recommend PHZ Full Stack as an employer to a friend or colleague?" is visible.
+
+
+#### Checking score buttons
+
+1. Checks that all score buttons are on the page.
+2. Checks that all score buttons are representing the correct number.
+
+#### Checking that the scaling texts are visible
+
+1. Checks that "0 = Extremely unlikely" is visible.
+2. Checks that "10 = Extremely likely" is visible.
+
+#### Checking that the comment field text is visible
+
+1. Checks "Please comment your reason for this score" text is visible
+
+### Checking that the comment area is rendered
+
+1. Checks that the box for additional comments is visible.
+
+### Checking the forms send button
+
+1. Checks that the form send button is on the page.
+2. Checks that the form send button has the correct text.
+
 ### 3.5. IDE Setup and Debugging
 
 ### 3.6. Version Control
