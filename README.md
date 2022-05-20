@@ -109,11 +109,11 @@ Takes screen shots of the tests running and saves in the folder automatically.
 
 #### 3.4.3 React Testing Library
 
-# Test descriptions
+#### Test descriptions
 
-## App.js
+#### App.js
 
-### Testing the Form
+#### Testing the Form
 
 #### Checking the question is visible
 
