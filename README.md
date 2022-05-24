@@ -43,6 +43,7 @@ Languages, frameworks and technologies used:
 - Netlify
 - Cypress
 - Backstopjs
+- localStorage
 
 ### 2.3. Coding Convention
 
